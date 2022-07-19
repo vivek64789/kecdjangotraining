@@ -28,5 +28,11 @@ def projects(request):
     return render(request, 'projects/projects.html', {'projects':allProjects})
 
 def project(request, id):
-    # fetch 
-    return render(request, 'projects/single-project.html', {'id':id})
+    project = {}
+    for i in allProjects:
+        if i['id'] == id:
+            project = i
+
+    context ={'project':project}
+
+    return render(request, 'projects/single-project.html', context=context)

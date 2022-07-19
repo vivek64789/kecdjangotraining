@@ -1,14 +1,11 @@
+
+
+
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>This is content in projects page</h1>
+
 {% for project in projects %}
-{% if project.category == 'server' %}
-<h2>Server Framework</h2>
-<p>{{ project.title }}</p>
-{% elif project.category == 'client' %}
-<h2>Client Framework</h2>
-<p>{{project.title}}</p>
-{% endif %}
+ <p><a href="{% url 'singleProject' project.id  %}">{{ project.title }}</a></p>
 {% endfor %}
 {% endblock content %}
