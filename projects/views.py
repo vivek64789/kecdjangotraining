@@ -1,37 +1,18 @@
+from http.client import PROCESSING
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Project
 
 # Create your views here.
 
-allProjects = [
-    {
-        'id':"1",
-        'title': 'Django Application',
-        'description':'This is description',
-        'category':'server'
-    },
-    {
-        'id':"2",
-        'title': 'React Application',
-        'description':'This is description',
-        'category':'client'
-    },
-    {
-        'id':"3",
-        'title': 'Angular Application',
-        'description':'This is description',
-        'category':'client'
-    },
-]
 
 def projects(request):
-    return render(request, 'projects/projects.html', {'projects':allProjects})
+    projects = Project.objects.all()
+    return render(request, 'projects/projects.html', {'projects':projects})
 
 def project(request, id):
-    project = {}
-    for i in allProjects:
-        if i['id'] == id:
-            project = i
+    project = Project.objects.get(id=id)
+
 
     context ={'project':project}
 

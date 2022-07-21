@@ -5,7 +5,25 @@
 
 {% block content %}
 
-{% for project in projects %}
- <p><a href="{% url 'singleProject' project.id  %}">{{ project.title }}</a></p>
+<table>
+    <tr>
+        <th>Project Id</th>
+        <th>Project Name</th>
+        <th>Ratio</th>
+        <th>Created at</th>
+        <th>View</th>
+    </tr>
+    {% for project in projects %}
+    <tr>
+        <td>{{project.id}}</td>
+        <td>{{project.title}}</td>
+        <td>{{project.vote_ratio}}</td>
+        <td>{{project.createdAt}}</td>
+        <td><a href="{% url 'singleProject' project.id  %}">View</a></td>
+    </tr>
+
 {% endfor %}
+</table>
+
+
 {% endblock content %}
