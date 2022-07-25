@@ -5,6 +5,8 @@
 
 {% block content %}
 
+<a href="{% url 'addProject' %}">Add Project</a>
+
 <table>
     <tr>
         <th>Project Id</th>
@@ -12,6 +14,8 @@
         <th>Ratio</th>
         <th>Created at</th>
         <th>View</th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
     {% for project in projects %}
     <tr>
@@ -20,6 +24,8 @@
         <td>{{project.vote_ratio}}</td>
         <td>{{project.createdAt}}</td>
         <td><a href="{% url 'singleProject' project.id  %}">View</a></td>
+        <td><a href="{% url 'updateProject' project.id  %}">Update</a></td>
+        <td><a href="{% url 'deleteProject' project.id  %}">Delete</a></td>
     </tr>
 
 {% endfor %}
