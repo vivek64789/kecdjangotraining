@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 import uuid
 
@@ -8,7 +9,7 @@ class Project(models.Model):
     description = models.TextField(null=True, blank=True)
     demo_link = models.CharField(max_length=1000, null=True, blank=True)
     source_link = models.CharField(max_length=1000, null=True, blank=True)
-    featured_img = models.CharField(max_length=1000, null=True, blank=True)
+    featured_img = models.ImageField( null=True, blank=True, default='placeholder.png')
     vote_ratio = models.CharField(max_length=1000, null=True, blank=True)
     vote_count = models.CharField(max_length=1000, null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
